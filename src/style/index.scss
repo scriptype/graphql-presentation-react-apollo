@@ -1,0 +1,17 @@
+/*
+ * Global styling.
+ *
+ * The purpose with these styles is to set up the app-wide base styling.
+ *
+ * Component/page specific styling should be handled from React components, using styled-components.
+ */
+
+/*
+ * Reset
+ */
+@import "./reset";
+
+/*
+ * Base styling
+ */
+@import "./base";
