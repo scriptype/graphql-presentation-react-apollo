@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const AllStations = () => {
-  return (
-    <>All Stations</>
-  )
-}
+  return <>All Stations</>;
+};
 
-export default AllStations
+export default AllStations;

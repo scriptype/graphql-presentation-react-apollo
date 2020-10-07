@@ -1,13 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 type Props = {
-  stationId: number
-}
+  stationId: number;
+};
 
 const Station = ({ stationId }: Props) => {
-  return (
-    <>Station: {stationId}</>
-  )
-}
+  return <>Station: {stationId}</>;
+};
 
-export default Station
+export default Station;

@@ -1,11 +1,11 @@
-import React from 'react'
-import { Switch, Route, useRouteMatch } from 'react-router-dom'
+import React from 'react';
+import { Switch, Route, useRouteMatch } from 'react-router-dom';
 
-import AllStations from './AllStations'
-import Station from './Station'
+import AllStations from './AllStations';
+import Station from './Station';
 
 const Stations = () => {
-  const { path } = useRouteMatch()
+  const { path } = useRouteMatch();
   return (
     <Switch>
       <Route exact path={path}>
@@ -15,7 +15,7 @@ const Stations = () => {
         {({ match }) => <Station stationId={match!.params.stationId} />}
       </Route>
     </Switch>
-  )
-}
+  );
+};
 
-export default Stations
+export default Stations;
