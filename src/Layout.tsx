@@ -5,6 +5,8 @@ const LayoutContainer = styled.div`
   min-height: 100vh;
   padding: 32px;
   background: ${({ theme }) => theme.background};
+  color: ${({ theme }) => theme.textColor};
+  font-family: IBMPlexSans, helvetica, arial, sans-serif;
 `;
 
 const ContentContainer = styled.div`
