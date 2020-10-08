@@ -3,10 +3,10 @@ import { gql, useQuery } from '@apollo/client';
 
 const GET_STATIONS = gql`
   query {
-    allStations(first: 5) {
+    allStations(first: 10) {
       id
       name
-      available
+      operational
     }
   }
 `;
@@ -29,7 +29,7 @@ const AllStations = () => {
       <ul>
         {allStations.map((station: any) => (
           <li key={station.id}>
-            {station.name}: {station.available}
+            {station.name}: {station.operational}
           </li>
         ))}
       </ul>
