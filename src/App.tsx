@@ -6,15 +6,15 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
-import ApolloClient from 'apollo-boost';
-import { ApolloProvider } from 'react-apollo';
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 
 import theme from './theme';
 import Layout from './Layout';
 import Stations from './modules/stations';
 
 const apolloClient = new ApolloClient({
-  uri: process.env.GRAPHQL_API_BASE_URL,
+  uri: process.env.REACT_APP_GRAPHQL_API_URL,
+  cache: new InMemoryCache(),
 });
 
 function App() {
