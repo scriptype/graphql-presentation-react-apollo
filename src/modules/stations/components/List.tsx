@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 const ListContainer = styled.div`
@@ -18,8 +19,15 @@ const ListItem = styled.div`
   ${ListItemStyles}
 `;
 
-const ListLinkItem = styled.div`
-  ${ListItemStyles}
+const ListLinkItem = styled(Link)`
+  ${ListItemStyles};
+  color: inherit;
+  text-decoration: none;
+  transition: box-shadow 0.2s;
+
+  &:hover {
+    box-shadow: 0.1rem 0.1rem 0.5rem rgba(0, 0, 0, 0.15);
+  }
 `;
 
 const ListItemPrimarySlot = styled.p`
@@ -31,7 +39,7 @@ const ListItemSecondarySlot = styled.div``;
 type ItemType = {
   key: string;
   text: string;
-  linkTo?: boolean;
+  linkTo?: string;
   secondarySlot?: () => React.ReactNode;
 };
 
@@ -68,7 +76,9 @@ const List = ({ items }: Props) => {
     <ListContainer>
       {items.map((item) =>
         item.linkTo ? (
-          <ListLinkItem key={item.key}>{itemContents[item.key]}</ListLinkItem>
+          <ListLinkItem to={item.linkTo} key={item.key}>
+            {itemContents[item.key]}
+          </ListLinkItem>
         ) : (
           <ListItem key={item.key}>{itemContents[item.key]}</ListItem>
         )
