@@ -4,4 +4,5 @@ export default {
   cardBackground: '#ffffff',
   textColor: '#222222',
   borderRadius: '8px',
+  iconSize: '16px',
 };
