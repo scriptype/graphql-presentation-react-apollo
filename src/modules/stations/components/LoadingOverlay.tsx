@@ -1,5 +1,15 @@
 import React from 'react';
 import { ApolloError } from '@apollo/client';
+import styled from 'styled-components';
+
+const LoadingText = styled.p`
+  font-size: 1.2rem;
+`;
+
+const ErrorText = styled.p`
+  font-size: 1.2rem;
+  color: ${({ theme }) => theme.colors.red};
+`;
 
 type Props = {
   loading: boolean;
@@ -9,9 +19,9 @@ type Props = {
 
 const LoadingOverlay = ({ loading, error, children }: Props) =>
   loading ? (
-    <>Loading...</>
+    <LoadingText>Loading...</LoadingText>
   ) : error ? (
-    <>Error: {error.message}</>
+    <ErrorText>Error: {error.message}</ErrorText>
   ) : (
     <>{children}</>
   );
