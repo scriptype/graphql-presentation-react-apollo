@@ -1,5 +1,12 @@
-import React from 'react';
+import React, { useMemo } from 'react';
+import { useRouteMatch } from 'react-router-dom';
 import { gql, useQuery } from '@apollo/client';
+
+import Container from './components/Container';
+import Title from './components/Title';
+import LoadingOverlay from './components/LoadingOverlay';
+import List from './components/List';
+import Pill from './components/Pill';
 
 const GET_STATIONS = gql`
   query {
@@ -12,28 +19,33 @@ const GET_STATIONS = gql`
 `;
 
 const AllStations = () => {
+  const { path } = useRouteMatch();
   const { loading, error, data } = useQuery(GET_STATIONS);
-  if (loading) {
-    return <>Loading your stations...</>;
-  }
-  if (error) {
-    return <>Error: {error.message}</>;
-  }
-  if (!data) {
-    return <>No stations found.</>;
-  }
-  const { allStations } = data;
+
+  const listItems = useMemo(() => {
+    if (!data) {
+      return undefined;
+    }
+    return data.allStations.map((station: any) => ({
+      key: station.id,
+      text: station.name,
+      linkTo: `${path}/${station.id}`,
+      secondarySlot: () =>
+        station.operational ? (
+          <Pill icon="available" text="Available" />
+        ) : (
+          <Pill icon="offline" text="Offline" />
+        ),
+    }));
+  }, [data, path]);
+
   return (
-    <div>
-      <h1>Your Stations</h1>
-      <ul>
-        {allStations.map((station: any) => (
-          <li key={station.id}>
-            {station.name}: {station.operational}
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Container>
+      <Title>Your stations</Title>
+      <LoadingOverlay loading={loading} error={error}>
+        <List items={listItems} />
+      </LoadingOverlay>
+    </Container>
   );
 };
 
