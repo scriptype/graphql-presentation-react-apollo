@@ -11,6 +11,7 @@ const LayoutContainer = styled.div`
 
 const ContentContainer = styled.div`
   width: 100%;
+  padding: 48px;
   background: ${({ theme }) => theme.contentBackground};
 
   @media (min-width: calc(1440px + 32px * 2)) {
