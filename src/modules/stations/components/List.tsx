@@ -1,10 +1,17 @@
 import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 const ListContainer = styled.div`
   display: grid;
   grid-row-gap: 0.5rem;
+`;
+
+const appear = keyframes`
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 `;
 
 const ListItemStyles = css`
@@ -13,6 +20,10 @@ const ListItemStyles = css`
   padding: 1.25rem 1rem;
   background: ${({ theme }) => theme.cardBackground};
   border-radius: ${({ theme }) => theme.borderRadius};
+
+  opacity: 0;
+  transform: translateY(-20%);
+  animation: ${appear} 0.3s calc(0.04s * var(--item-index)) forwards;
 `;
 
 const ListItem = styled.div`
@@ -80,13 +91,19 @@ const List = ({ items }: Props) => {
 
   return (
     <ListContainer>
-      {items.map((item) =>
+      {items.map((item, index) =>
         item.linkTo ? (
-          <ListLinkItem to={item.linkTo} key={item.key}>
+          <ListLinkItem
+            to={item.linkTo}
+            key={item.key}
+            style={{ '--item-index': index } as any}
+          >
             {itemContents[item.key]}
           </ListLinkItem>
         ) : (
-          <ListItem key={item.key}>{itemContents[item.key]}</ListItem>
+          <ListItem key={item.key} style={{ '--item-index': index } as any}>
+            {itemContents[item.key]}
+          </ListItem>
         )
       )}
     </ListContainer>
