@@ -23,10 +23,16 @@ const ListLinkItem = styled(Link)`
   ${ListItemStyles};
   color: inherit;
   text-decoration: none;
-  transition: box-shadow 0.2s;
+  transition: all 0.2s;
 
   &:hover {
     box-shadow: 0.1rem 0.1rem 0.5rem rgba(0, 0, 0, 0.15);
+    transform: translateY(-2.5%);
+  }
+
+  &:active {
+    box-shadow: inset 0.1rem 0.1rem 0.25rem rgba(0, 0, 0, 0.15);
+    transform: translateY(0);
   }
 `;
 
