@@ -29,7 +29,12 @@ const AllStations = () => {
     return data.allStations.map((station: any) => ({
       key: station.id,
       text: station.name,
-      linkTo: `${path}/${station.id}`,
+      linkTo: {
+        pathname: `${path}/${station.id}`,
+        state: {
+          name: station.name,
+        },
+      },
       secondarySlot: () =>
         station.operational ? (
           <Pill icon="available" text="Available" />

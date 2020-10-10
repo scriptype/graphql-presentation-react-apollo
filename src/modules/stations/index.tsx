@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
 
 import AllStations from './AllStations';
-import Station from './Station';
+import Station, { StationType } from './Station';
 
 const Stations = () => {
   const { path } = useRouteMatch();
@@ -12,7 +12,14 @@ const Stations = () => {
         <AllStations />
       </Route>
       <Route path={`${path}/:stationId`}>
-        {({ match }) => <Station stationId={match!.params.stationId} />}
+        {({ match, location }) => {
+          return (
+            <Station
+              initialStationData={location.state as StationType}
+              stationId={match!.params.stationId}
+            />
+          );
+        }}
       </Route>
     </Switch>
   );

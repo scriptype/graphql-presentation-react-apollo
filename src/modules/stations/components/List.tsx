@@ -56,7 +56,7 @@ const ListItemSecondarySlot = styled.div``;
 type ItemType = {
   key: string;
   text: string;
-  linkTo?: string;
+  linkTo?: object;
   secondarySlot?: () => React.ReactNode;
 };
 

@@ -38,13 +38,14 @@ const StationModel = {
   currency: String,
 };
 
+export type StationType = typeof StationModel;
+
 type Props = {
   stationId: number;
+  initialStationData: StationType;
 };
 
-type StationType = typeof StationModel;
-
-const Station = ({ stationId }: Props) => {
+const Station = ({ stationId, initialStationData }: Props) => {
   const GET_STATION = useMemo(
     () => gql`
     query {
@@ -72,7 +73,7 @@ const Station = ({ stationId }: Props) => {
       {loading && (
         <TitleRow>
           <GoBackButton href="/stations" />
-          <Title>Loading...</Title>
+          <Title>{initialStationData.name || 'Loading...'}</Title>
         </TitleRow>
       )}
       <LoadingOverlay loading={loading} error={error}>
