@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import icons from './icons.svg';
+import icons from 'assets/icons.svg';
 
 const StyledSVG = styled.svg`
   width: ${({ theme }) => theme.iconSize};

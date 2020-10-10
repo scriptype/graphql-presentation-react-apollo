@@ -7,5 +7,9 @@
     <symbol id="offline" viewBox="0 0 16 16">
         <path d="M8 1C4.1 1 1 4.1 1 8s3.1 7 7 7 7-3.1 7-7-3.1-7-7-7zm2.7 10.5L4.5 5.3l.8-.8 6.2 6.2-.8.8z" fill="red" fill-rule="evenodd"/>
     </symbol>
+
+    <symbol id="arrow-left" viewBox="0 0 32 32">
+      <path d="M13 26l1.41-1.41L6.83 17H29v-2H6.83l7.58-7.59L13 6 3 16z" fill="currentColor" fill-rule="evenodd"/>
+    </symbol>
   </defs>
 </svg>
