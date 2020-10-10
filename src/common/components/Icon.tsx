@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import icons from 'assets/icons.svg';
-
 const StyledSVG = styled.svg`
   width: ${({ theme, width }) => width || theme.iconSize};
   height: ${({ theme, height }) => height || theme.iconSize};
@@ -22,7 +20,7 @@ const Icon = ({ glyph, width, height }: Props) => {
       width={width}
       height={height}
     >
-      <use xlinkHref={`${icons}#${glyph}`} />
+      <use xlinkHref={`#${glyph}`} />
     </StyledSVG>
   );
 };
