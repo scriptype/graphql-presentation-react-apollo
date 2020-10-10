@@ -20,13 +20,16 @@ const Label = styled.span`
   color: ${({ theme }) => theme.colors.darkGray};
 `;
 
-const Value = styled.span``;
+const Value = styled.span`
+  word-break: break-word;
+`;
 
 const BooleanValue = styled.span`
   display: inline-block;
   position: relative;
   width: 2.5rem;
   height: 1.5rem;
+  margin-top: 0.1rem;
   border-radius: 1rem;
   border: 1px solid currentColor;
   font-size: 0;
