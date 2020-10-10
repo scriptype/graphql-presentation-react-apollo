@@ -19,7 +19,8 @@ const Button = styled(Link)`
     transition: transform 0.15s;
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
     background: ${({ theme }) => theme.colors.darkGray};
 
     & svg {
