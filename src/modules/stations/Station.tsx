@@ -13,6 +13,8 @@ const FieldsContainer = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   column-gap: 1rem;
   row-gap: 2rem;
+  place-content: start;
+  min-height: 450px;
   padding: 1.25rem 1.5rem;
   background: ${({ theme }) => theme.cardBackground};
   border-radius: ${({ theme }) => theme.borderRadius};
