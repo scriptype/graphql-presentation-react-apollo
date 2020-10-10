@@ -6,6 +6,9 @@ const StyledTitle = styled.h1`
   font-size: 3rem;
   font-weight: bold;
   letter-spacing: calc(-1rem / 40);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 type Props = {
