@@ -43,9 +43,10 @@ export type StationType = typeof StationModel;
 type Props = {
   stationId: number;
   initialStationData: StationType;
+  fromList: boolean;
 };
 
-const Station = ({ stationId, initialStationData }: Props) => {
+const Station = ({ stationId, initialStationData, fromList }: Props) => {
   const GET_STATION = useMemo(
     () => gql`
     query {
@@ -68,19 +69,24 @@ const Station = ({ stationId, initialStationData }: Props) => {
 
   const fields = omit(Object.keys(StationModel), '__typename');
 
+  const goBackProperties = {
+    pathname: '/stations',
+    state: { fromStation: true },
+  };
+
   return (
-    <Container>
+    <Container shouldAppearFromRight={!!fromList}>
       {loading && (
         <TitleRow>
-          <GoBackButton href="/stations" />
-          <Title>{initialStationData.name || 'Loading...'}</Title>
+          <GoBackButton to={goBackProperties} />
+          <Title>{initialStationData?.name || 'Loading...'}</Title>
         </TitleRow>
       )}
       <LoadingOverlay loading={loading} error={error}>
         {data && (
           <>
             <TitleRow>
-              <GoBackButton href="/stations" />
+              <GoBackButton to={goBackProperties} />
               <Title>{data.station.name}</Title>
             </TitleRow>
             <FieldsContainer>

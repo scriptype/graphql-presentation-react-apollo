@@ -18,7 +18,11 @@ const GET_STATIONS = gql`
   }
 `;
 
-const AllStations = () => {
+type Props = {
+  fromStation?: boolean;
+};
+
+const AllStations = ({ fromStation }: Props) => {
   const { path } = useRouteMatch();
   const { loading, error, data } = useQuery(GET_STATIONS);
 
@@ -32,7 +36,10 @@ const AllStations = () => {
       linkTo: {
         pathname: `${path}/${station.id}`,
         state: {
-          name: station.name,
+          fromList: true,
+          stationData: {
+            name: station.name,
+          },
         },
       },
       secondarySlot: () =>
@@ -45,7 +52,7 @@ const AllStations = () => {
   }, [data, path]);
 
   return (
-    <Container>
+    <Container shouldAppearFromLeft={!!fromStation}>
       <Title>Your stations</Title>
       <LoadingOverlay loading={loading} error={error}>
         <List items={listItems} />

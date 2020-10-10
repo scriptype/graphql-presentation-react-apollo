@@ -9,13 +9,20 @@ const Stations = () => {
   return (
     <Switch>
       <Route exact path={path}>
-        <AllStations />
+        {({ location }) => {
+          return (
+            <AllStations fromStation={(location.state as any)?.fromStation} />
+          );
+        }}
       </Route>
       <Route path={`${path}/:stationId`}>
         {({ match, location }) => {
           return (
             <Station
-              initialStationData={location.state as StationType}
+              fromList={(location.state as any)?.fromList}
+              initialStationData={
+                (location.state as any)?.stationData as StationType
+              }
               stationId={match!.params.stationId}
             />
           );

@@ -38,12 +38,12 @@ const Button = styled(Link)`
 `;
 
 type Props = {
-  href: string;
+  to: object;
 };
 
-var GoBackButton = ({ href }: Props) => {
+var GoBackButton = ({ to }: Props) => {
   return (
-    <Button to={href}>
+    <Button to={to}>
       <Icon glyph="arrow-left" width="2.6rem" height="2rem" />
     </Button>
   );
