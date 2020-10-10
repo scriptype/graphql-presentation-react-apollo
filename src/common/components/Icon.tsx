@@ -4,19 +4,23 @@ import styled from 'styled-components';
 import icons from 'assets/icons.svg';
 
 const StyledSVG = styled.svg`
-  width: ${({ theme }) => theme.iconSize};
-  height: ${({ theme }) => theme.iconSize};
+  width: ${({ theme, width }) => width || theme.iconSize};
+  height: ${({ theme, height }) => height || theme.iconSize};
 `;
 
 type Props = {
   glyph: string;
+  width?: string;
+  height?: string;
 };
 
-const Icon = ({ glyph }: Props) => {
+const Icon = ({ glyph, width, height }: Props) => {
   return (
     <StyledSVG
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
+      width={width}
+      height={height}
     >
       <use xlinkHref={`${icons}#${glyph}`} />
     </StyledSVG>
