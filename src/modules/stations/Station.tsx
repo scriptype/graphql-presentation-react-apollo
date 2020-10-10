@@ -2,11 +2,18 @@ import React, { useMemo } from 'react';
 import { gql, useQuery } from '@apollo/client';
 import styled from 'styled-components';
 
+import { omit } from 'common/utils';
 import Container from './components/Container';
+import GoBackButton from './components/GoBackButton';
 import Title from './components/Title';
 import LoadingOverlay from './components/LoadingOverlay';
 import Field from './components/Field';
-import { omit } from 'common/utils';
+
+const TitleRow = styled.div`
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 1.5rem;
+`;
 
 const FieldsContainer = styled.div`
   display: grid;
@@ -62,11 +69,19 @@ const Station = ({ stationId }: Props) => {
 
   return (
     <Container>
-      {loading && <Title>Loading...</Title>}
+      {loading && (
+        <TitleRow>
+          <GoBackButton href="/stations" />
+          <Title>Loading...</Title>
+        </TitleRow>
+      )}
       <LoadingOverlay loading={loading} error={error}>
         {data && (
           <>
-            <Title>{data.station.name}</Title>
+            <TitleRow>
+              <GoBackButton href="/stations" />
+              <Title>{data.station.name}</Title>
+            </TitleRow>
             <FieldsContainer>
               {fields.map((key: string) => (
                 <Field
