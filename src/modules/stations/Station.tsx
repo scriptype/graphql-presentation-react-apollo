@@ -3,9 +3,9 @@ import { gql, useQuery } from '@apollo/client';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet-async';
 
-import Container from './components/Container';
+import Title from 'common/components/Title';
+import Container from 'common/components/Container';
 import GoBackButton from './components/GoBackButton';
-import Title from './components/Title';
 import LoadingOverlay from './components/LoadingOverlay';
 import StationField from './components/StationFields';
 import { StationFieldType } from './types';

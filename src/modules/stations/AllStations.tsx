@@ -3,11 +3,11 @@ import { useRouteMatch } from 'react-router-dom';
 import { gql, useQuery } from '@apollo/client';
 import { Helmet } from 'react-helmet-async';
 
-import Container from './components/Container';
-import Title from './components/Title';
+import Title from 'common/components/Title';
+import List from 'common/components/List';
+import Pill from 'common/components/Pill';
+import Container from 'common/components/Container';
 import LoadingOverlay from './components/LoadingOverlay';
-import List from './components/List';
-import Pill from './components/Pill';
 
 const GET_STATIONS = gql`
   query {
