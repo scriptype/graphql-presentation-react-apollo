@@ -8,7 +8,7 @@ import Container from './components/Container';
 import GoBackButton from './components/GoBackButton';
 import Title from './components/Title';
 import LoadingOverlay from './components/LoadingOverlay';
-import Field from './components/Field';
+import StationField, { FieldType } from './components/StationField';
 
 const TitleRow = styled.div`
   display: grid;
@@ -28,15 +28,17 @@ const FieldsContainer = styled.div`
   border-radius: ${({ theme }) => theme.borderRadius};
 `;
 
-const StationModel = {
-  id: Number,
-  name: String,
-  status: String,
-  inuse: Date,
-  available: Boolean,
-  connected: Boolean,
-  disabled: Boolean,
-  currency: String,
+type CustomFieldType = 'connector';
+const StationModel: { [key: string]: FieldType | CustomFieldType } = {
+  id: 'number',
+  name: 'string',
+  status: 'string',
+  inuse: 'date',
+  currency: 'string',
+  available: 'boolean',
+  connected: 'boolean',
+  disabled: 'boolean',
+  connectors: 'connector',
 };
 
 export type StationType = typeof StationModel;
@@ -60,6 +62,11 @@ const Station = ({ stationId, initialStationData, fromList }: Props) => {
         disabled
         currency
         inuse
+        connectors {
+          type
+          currentType
+          status
+        }
       }
     }
   `,
@@ -100,11 +107,11 @@ const Station = ({ stationId, initialStationData, fromList }: Props) => {
             </TitleRow>
             <FieldsContainer>
               {fields.map((key: string) => (
-                <Field
+                <StationField
                   key={`station-field-${key}`}
                   label={key}
                   value={data.station[key]}
-                  type={StationModel[key as keyof StationType]}
+                  type={StationModel[key]}
                 />
               ))}
             </FieldsContainer>
