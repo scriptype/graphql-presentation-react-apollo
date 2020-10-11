@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import { gql, useQuery } from '@apollo/client';
 import styled from 'styled-components';
+import { Helmet } from 'react-helmet-async';
 
 import { omit } from 'common/utils';
 import Container from './components/Container';
@@ -78,6 +79,11 @@ const Station = ({ stationId, initialStationData, fromList }: Props) => {
     <Container shouldAppearFromRight={!!fromList}>
       {loading && (
         <TitleRow>
+          {initialStationData && (
+            <Helmet>
+              <title>{initialStationData.name} / React-Apollo</title>
+            </Helmet>
+          )}
           <GoBackButton to={goBackProperties} />
           <Title>{initialStationData?.name || 'Loading...'}</Title>
         </TitleRow>
@@ -85,6 +91,9 @@ const Station = ({ stationId, initialStationData, fromList }: Props) => {
       <LoadingOverlay loading={loading} error={error}>
         {data && (
           <>
+            <Helmet>
+              <title>{data.station.name} / React-Apollo</title>
+            </Helmet>
             <TitleRow>
               <GoBackButton to={goBackProperties} />
               <Title>{data.station.name}</Title>

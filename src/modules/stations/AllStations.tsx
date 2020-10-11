@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import { useRouteMatch } from 'react-router-dom';
 import { gql, useQuery } from '@apollo/client';
+import { Helmet } from 'react-helmet-async';
 
 import Container from './components/Container';
 import Title from './components/Title';
@@ -53,6 +54,9 @@ const AllStations = ({ fromStation }: Props) => {
 
   return (
     <Container shouldAppearFromLeft={!!fromStation}>
+      <Helmet>
+        <title>Stations / React-Apollo</title>
+      </Helmet>
       <Title>Your stations</Title>
       <LoadingOverlay loading={loading} error={error}>
         <List items={listItems} />

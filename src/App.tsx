@@ -6,6 +6,7 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import SVG from 'react-inlinesvg';
 
@@ -23,21 +24,23 @@ function App() {
   return (
     <ApolloProvider client={apolloClient}>
       <ThemeProvider theme={theme}>
-        <Layout>
-          <Router>
-            <Switch>
-              <Route exact path="/">
-                <Redirect to="/stations" />
-              </Route>
-              <Route path="/stations">
-                <Stations />
-              </Route>
-            </Switch>
-          </Router>
-        </Layout>
-        <div style={{ display: 'none' }}>
-          <SVG cacheRequests={true} src={icons} />
-        </div>
+        <HelmetProvider>
+          <Layout>
+            <Router>
+              <Switch>
+                <Route exact path="/">
+                  <Redirect to="/stations" />
+                </Route>
+                <Route path="/stations">
+                  <Stations />
+                </Route>
+              </Switch>
+            </Router>
+          </Layout>
+          <div style={{ display: 'none' }}>
+            <SVG cacheRequests={true} src={icons} />
+          </div>
+        </HelmetProvider>
       </ThemeProvider>
     </ApolloProvider>
   );
