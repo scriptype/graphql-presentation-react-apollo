@@ -11,5 +11,9 @@
     <symbol id="arrow-left" viewBox="0 0 32 32">
       <path d="M13 26l1.41-1.41L6.83 17H29v-2H6.83l7.58-7.59L13 6 3 16z" fill="currentColor" fill-rule="evenodd"/>
     </symbol>
+
+    <symbol id="connector" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M8 2v5H5.87l1.25 10H11v5h2v-5h3.88l1.25-10H16V2h-2v5h-4V2zm7.12 13H8.88l-.75-6h7.73z"/>
+    </symbol>
   </defs>
 </svg>

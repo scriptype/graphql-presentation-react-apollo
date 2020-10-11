@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const StyledSVG = styled.svg`
   width: ${({ theme, width }) => width || theme.iconSize};
   height: ${({ theme, height }) => height || theme.iconSize};
+  vertical-align: middle;
 `;
 
 type Props = {
