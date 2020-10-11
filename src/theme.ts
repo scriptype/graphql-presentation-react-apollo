@@ -6,7 +6,8 @@ const colors = {
   gray: '#d4d9de',
   lightGray: '#f2f2f2',
   white: '#ffffff',
-  red: 'crimson',
+  green: '#60ca46',
+  red: '#ca4646',
 };
 
 const theme: DefaultTheme = {

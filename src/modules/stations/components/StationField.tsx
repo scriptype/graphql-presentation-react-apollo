@@ -51,7 +51,8 @@ const BooleanValue = styled(({ value, ...rest }: BooleanValueProps) => (
   border-radius: 1rem;
   border: 1px solid currentColor;
   font-size: 0;
-  color: ${({ value, theme }) => (!!value ? '#60ca46' : theme.colors.darkGray)};
+  color: ${({ value, theme }) =>
+    !!value ? theme.colors.green : theme.colors.darkGray};
 
   &::after {
     content: '';
@@ -85,18 +86,18 @@ const ConnectorValue = styled(({ status, ...rest }: ConnectorValueType) => (
   background: ${({ theme }) => theme.colors.gray};
   border-radius: ${({ theme }) => theme.borderRadius};
 
-  ${({ status }) =>
+  ${({ status, theme }) =>
     status === 'Operative'
       ? css`
           ${ConnectorValueCurrentType} {
-            background: #60ca46;
+            background: ${theme.colors.green};
             color: white;
           }
         `
       : status === 'Inoperative'
       ? css`
           ${ConnectorValueCurrentType} {
-            background: #ca4646;
+            background: ${theme.colors.red};
             color: white;
           }
         `
