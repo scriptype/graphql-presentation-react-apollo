@@ -11,7 +11,11 @@ const Stations = () => {
       <Route exact path={path}>
         {({ location }) => {
           return (
-            <AllStations fromStation={(location.state as any)?.fromStation} />
+            <AllStations
+              routeParams={{
+                fromStation: (location.state as any)?.fromStation,
+              }}
+            />
           );
         }}
       </Route>
@@ -19,7 +23,7 @@ const Stations = () => {
         {({ match, location }) => {
           return (
             <Station
-              fromList={(location.state as any)?.fromList}
+              routeParams={{ fromList: (location.state as any)?.fromList }}
               initialStationData={
                 (location.state as any)?.stationData as StationType
               }

@@ -2,24 +2,17 @@ import React from 'react';
 import styled, { css, DefaultTheme } from 'styled-components';
 import moment from 'moment';
 
-import { capitalize } from 'common/utils';
-
-export type FieldType = 'string' | 'number' | 'boolean' | 'date' | 'connector';
+import { capitalize, DATE_FORMAT } from 'common/utils';
+import { StationFieldType, ConnectorFieldType } from '../types';
 
 type Props = {
   label: string;
   value: any;
-  type: FieldType;
+  type: StationFieldType;
 };
 
 type FieldTypeRenderers = {
-  [key in FieldType]: (props: Props) => React.ReactNode;
-};
-
-type ConnectorFieldType = {
-  type: string;
-  currentType: string;
-  status: string;
+  [key in StationFieldType]: (value: Props['value']) => React.ReactNode;
 };
 
 const Container = styled.div`
@@ -75,9 +68,8 @@ const ConnectorValueContainer = styled.div`
   margin-top: 0.1rem;
 `;
 
-type ConnectorValueType = React.HTMLAttributes<HTMLSpanElement> & {
-  status: string;
-};
+type ConnectorValueType = React.HTMLAttributes<HTMLSpanElement> &
+  Pick<ConnectorFieldType, 'status'>;
 const ConnectorValue = styled(({ status, ...rest }: ConnectorValueType) => (
   <span {...rest} />
 ))`
@@ -86,22 +78,13 @@ const ConnectorValue = styled(({ status, ...rest }: ConnectorValueType) => (
   background: ${({ theme }) => theme.colors.gray};
   border-radius: ${({ theme }) => theme.borderRadius};
 
-  ${({ status, theme }) =>
-    status === 'Operative'
-      ? css`
-          ${ConnectorValueCurrentType} {
-            background: ${theme.colors.green};
-            color: white;
-          }
-        `
-      : status === 'Inoperative'
-      ? css`
-          ${ConnectorValueCurrentType} {
-            background: ${theme.colors.red};
-            color: white;
-          }
-        `
-      : null}
+  ${({ status, theme: { colors } }) =>
+    css`
+      ${ConnectorValueCurrentType} {
+        background: ${status === 'Operative' ? colors.green : colors.red};
+        color: white;
+      }
+    `}
 `;
 
 const ConnectorValueCurrentType = styled.span`
@@ -124,23 +107,21 @@ const ConnectorValueName = styled.span`
 `;
 
 const fieldTypeRenderers: FieldTypeRenderers = {
-  string: ({ value }: Props) => <Value>{value}</Value>,
+  string: (value: string) => <Value>{value}</Value>,
 
-  number: ({ value }: Props) => <Value>{value}</Value>,
+  number: (value: number) => <Value>{value}</Value>,
 
-  boolean: ({ value }: Props) => (
-    <BooleanValue value={value as boolean}>{String(value)}</BooleanValue>
+  boolean: (value: boolean) => (
+    <BooleanValue value={value}>{String(value)}</BooleanValue>
   ),
 
-  date: ({ value }: Props) => (
-    <Value>
-      {value && moment(value as string).format('D MMM YYYY, HH:MM')}
-    </Value>
+  date: (value: string | null) => (
+    <Value>{value && moment(value).format(DATE_FORMAT)}</Value>
   ),
 
-  connector: ({ value }: Props) => (
+  connector: (value: ConnectorFieldType[]) => (
     <ConnectorValueContainer>
-      {value.map((connector: ConnectorFieldType) => (
+      {value.map((connector) => (
         <ConnectorValue key={`${connector.type}`} status={connector.status}>
           <ConnectorValueCurrentType>
             {connector.currentType}
@@ -156,7 +137,7 @@ const StationField = ({ label, value, type }: Props) => {
   return (
     <Container>
       <Label>{capitalize(label)}</Label>
-      {fieldTypeRenderers[type]({ label, value, type })}
+      {fieldTypeRenderers[type](value)}
     </Container>
   );
 };

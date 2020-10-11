@@ -20,10 +20,12 @@ const GET_STATIONS = gql`
 `;
 
 type Props = {
-  fromStation?: boolean;
+  routeParams: {
+    fromStation?: boolean;
+  };
 };
 
-const AllStations = ({ fromStation }: Props) => {
+const AllStations = ({ routeParams }: Props) => {
   const { path } = useRouteMatch();
   const { loading, error, data } = useQuery(GET_STATIONS);
 
@@ -53,7 +55,7 @@ const AllStations = ({ fromStation }: Props) => {
   }, [data, path]);
 
   return (
-    <Container shouldAppearFromLeft={!!fromStation}>
+    <Container shouldAppearFromLeft={!!routeParams.fromStation}>
       <Helmet>
         <title>Stations / React-Apollo</title>
       </Helmet>
