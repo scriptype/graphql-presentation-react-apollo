@@ -1,3 +1,5 @@
+import { DefaultTheme } from 'styled-components';
+
 const colors = {
   black: '#222222',
   darkGray: '#5f5f5f',
@@ -7,7 +9,7 @@ const colors = {
   red: 'crimson',
 };
 
-export default {
+const theme: DefaultTheme = {
   colors,
 
   background: colors.gray,
@@ -17,3 +19,5 @@ export default {
   borderRadius: '8px',
   iconSize: '16px',
 };
+
+export default theme;

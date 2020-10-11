@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { DefaultTheme } from 'styled-components';
 import moment from 'moment';
 
 import { capitalize } from 'common/utils';
@@ -24,7 +24,13 @@ const Value = styled.span`
   word-break: break-word;
 `;
 
-const BooleanValue = styled(({ value, ...rest }) => <span {...rest} />)`
+type BooleanValueProps = React.HTMLAttributes<HTMLSpanElement> & {
+  value: boolean;
+  theme: DefaultTheme;
+};
+const BooleanValue = styled(({ value, ...rest }: BooleanValueProps) => (
+  <span {...rest} />
+))`
   display: inline-block;
   position: relative;
   width: 2.5rem;
