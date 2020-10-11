@@ -49,6 +49,10 @@ const ConnectorValueName = styled.span`
   border-bottom-right-radius: inherit;
 `;
 
+const ConnectorIcon = styled(Icon)`
+  vertical-align: middle;
+`;
+
 const ConnectorField = (value: ConnectorFieldType[]) => (
   <ConnectorValueContainer>
     {value.map((connector) => (
@@ -58,7 +62,7 @@ const ConnectorField = (value: ConnectorFieldType[]) => (
         status={connector.status}
       >
         <ConnectorValueCurrentType aria-label="Current type">
-          <Icon glyph="connector" width="16px" height="16px" />
+          <ConnectorIcon glyph="connector" />
           {connector.currentType}
         </ConnectorValueCurrentType>
         <ConnectorValueName aria-label="Type">

@@ -37,6 +37,11 @@ const Button = styled(Link)`
   }
 `;
 
+const GoBackIcon = styled(Icon)`
+  width: 2.6rem;
+  height: 2rem;
+`;
+
 type Props = {
   to: object;
 };
@@ -44,7 +49,7 @@ type Props = {
 var GoBackButton = ({ to }: Props) => {
   return (
     <Button to={to}>
-      <Icon glyph="arrow-left" width="2.6rem" height="2rem" />
+      <GoBackIcon glyph="arrow-left" />
     </Button>
   );
 };
