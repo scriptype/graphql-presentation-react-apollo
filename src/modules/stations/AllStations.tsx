@@ -11,7 +11,7 @@ import Pill from './components/Pill';
 
 const GET_STATIONS = gql`
   query {
-    allStations(first: 10) {
+    allStations(first: 20) {
       id
       name
       operational
