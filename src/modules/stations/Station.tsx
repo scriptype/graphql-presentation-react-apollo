@@ -93,7 +93,7 @@ const Station = ({ stationId, initialStationData, routeParams }: Props) => {
           <Title>{initialStationData?.name || 'Loading...'}</Title>
         </TitleRow>
       )}
-      <LoadingOverlay loading={loading} error={error}>
+      <LoadingOverlay loading={loading} error={error} onErrorLink="/stations">
         {data && (
           <>
             <Helmet>

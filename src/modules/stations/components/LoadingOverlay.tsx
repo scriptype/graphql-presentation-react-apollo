@@ -1,6 +1,7 @@
 import React from 'react';
 import { ApolloError } from '@apollo/client';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const LoadingText = styled.p`
   font-size: 1.2rem;
@@ -9,19 +10,29 @@ const LoadingText = styled.p`
 const ErrorText = styled.p`
   font-size: 1.2rem;
   color: ${({ theme }) => theme.colors.red};
+  margin-bottom: 1em;
+`;
+
+const ErrorLink = styled(Link)`
+  font-size: 1.2rem;
+  color: ${({ theme }) => theme.colors.darkGray};
 `;
 
 type Props = {
   loading: boolean;
   error: ApolloError | undefined;
+  onErrorLink?: string;
   children: React.ReactNode;
 };
 
-const LoadingOverlay = ({ loading, error, children }: Props) =>
+const LoadingOverlay = ({ loading, error, onErrorLink, children }: Props) =>
   loading ? (
     <LoadingText>Loading...</LoadingText>
   ) : error ? (
-    <ErrorText>Error: {error.message}</ErrorText>
+    <>
+      <ErrorText>Error: {error.message}</ErrorText>
+      {onErrorLink && <ErrorLink to={onErrorLink}>« Go back</ErrorLink>}
+    </>
   ) : (
     <>{children}</>
   );
