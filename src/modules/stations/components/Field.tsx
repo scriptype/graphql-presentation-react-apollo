@@ -24,7 +24,7 @@ const Value = styled.span`
   word-break: break-word;
 `;
 
-const BooleanValue = styled.span`
+const BooleanValue = styled(({ value, ...rest }) => <span {...rest} />)`
   display: inline-block;
   position: relative;
   width: 2.5rem;
@@ -33,8 +33,7 @@ const BooleanValue = styled.span`
   border-radius: 1rem;
   border: 1px solid currentColor;
   font-size: 0;
-  color: ${({ value, theme }: { value: boolean; theme: any }) =>
-    !!value ? '#60ca46' : theme.colors.darkGray};
+  color: ${({ value, theme }) => (!!value ? '#60ca46' : theme.colors.darkGray)};
 
   &::after {
     content: '';
@@ -46,7 +45,7 @@ const BooleanValue = styled.span`
     height: 1rem;
     border-radius: 100%;
     background: currentColor;
-    left: ${({ value }: { value: boolean }) => (!!value ? '70%' : '30%')};
+    left: ${({ value }) => (!!value ? '70%' : '30%')};
   }
 `;
 
