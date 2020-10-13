@@ -15,6 +15,16 @@ const Button = styled(Link)`
   text-decoration: none;
   transition: background 0.15s;
 
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    width: 2rem;
+    height: 2rem;
+  }
+
   svg {
     transition: transform 0.15s;
   }
@@ -40,6 +50,16 @@ const Button = styled(Link)`
 const GoBackIcon = styled(Icon)`
   width: 2.6rem;
   height: 2rem;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    width: 2rem;
+    height: 1.6rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    width: 1.6rem;
+    height: 1.2rem;
+  }
 `;
 
 type Props = {

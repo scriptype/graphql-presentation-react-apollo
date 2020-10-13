@@ -10,8 +10,14 @@ const colors = {
   red: '#ca4646',
 };
 
+const breakpoints = {
+  md: '720px',
+  sm: '480px',
+};
+
 const theme: DefaultTheme = {
   colors,
+  breakpoints,
 
   background: colors.gray,
   contentBackground: colors.lightGray,

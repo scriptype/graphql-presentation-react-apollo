@@ -49,6 +49,18 @@ const ListLinkItem = styled(Link)`
 
 const ListItemPrimarySlot = styled.p`
   font-weight: bold;
+  max-width: 400px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    max-width: 300px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    max-width: 200px;
+  }
 `;
 
 const ListItemSecondarySlot = styled.div``;

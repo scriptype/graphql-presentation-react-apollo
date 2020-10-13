@@ -11,6 +11,10 @@ declare module 'styled-components' {
       green: string;
       red: string;
     };
+    breakpoints: {
+      md: string;
+      sm: string;
+    };
     background: string;
     contentBackground: string;
     cardBackground: string;

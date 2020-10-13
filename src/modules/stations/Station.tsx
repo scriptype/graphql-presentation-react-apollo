@@ -14,6 +14,14 @@ const TitleRow = styled.div`
   display: grid;
   grid-template-columns: auto 1fr;
   column-gap: 1.5rem;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    column-gap: 1rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    column-gap: 0.66rem;
+  }
 `;
 
 const FieldsContainer = styled.div`
