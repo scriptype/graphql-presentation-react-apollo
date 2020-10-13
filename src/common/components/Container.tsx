@@ -10,6 +10,12 @@ const appear = keyframes`
 
 const StyledContainer = styled.div`
   padding-top: 3.6rem;
+
+  @media (min-width: 760px) {
+    width: 600px;
+    margin: 0 auto;
+  }
+
   ${({ shouldAppearFromLeft }: Props) =>
     shouldAppearFromLeft &&
     css`
@@ -25,11 +31,6 @@ const StyledContainer = styled.div`
       transform: translateX(4%);
       animation: ${appear} 0.5s forwards;
     `}
-
-  @media (min-width: 760px) {
-    width: 600px;
-    margin: 0 auto;
-  }
 `;
 
 type Props = {
