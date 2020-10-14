@@ -59,7 +59,11 @@ const ListItemPrimarySlot = styled.p`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    max-width: 200px;
+    max-width: 50vw;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.xs}) {
+    max-width: 40vw;
   }
 `;
 
