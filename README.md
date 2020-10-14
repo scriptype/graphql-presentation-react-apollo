@@ -32,14 +32,18 @@ npm start
 
 ## Deployment
 
-Running:
+Deployment of the app is handled by the [Hub](https://github.com/scriptype/graphql-presentation-hub).
+
+In case you want to deploy this front-end separately, you can run the following
+command to build production-ready static assets into build folder:
 
 ```sh
+# Before running this, you would need to create an .env.production that will
+# have the graphql api url for the production environment.
 npm run build
 ```
 
-Will produce production-ready static assets into `build` folder. But this will be
-handled by the [Hub](https://github.com/scriptype/graphql-presentation-hub).
+But the above step is not necessary when deploying the app using Hub.
 
 ## Tests
 
