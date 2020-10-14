@@ -13,6 +13,7 @@ const colors = {
 const breakpoints = {
   md: '720px',
   sm: '480px',
+  xs: '360px',
 };
 
 const theme: DefaultTheme = {

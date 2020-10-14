@@ -14,6 +14,7 @@ declare module 'styled-components' {
     breakpoints: {
       md: string;
       sm: string;
+      xs: string;
     };
     background: string;
     contentBackground: string;
