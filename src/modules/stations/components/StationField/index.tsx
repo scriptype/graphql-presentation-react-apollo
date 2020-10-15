@@ -37,7 +37,9 @@ const fieldTypeRenderers: FieldTypeRenderers = {
   boolean: BooleanField,
   connector: ConnectorField,
   date: (value: string | null) => (
-    <Value>{value && moment(value).format(DATE_FORMAT)}</Value>
+    <Value>
+      {value && moment.utc(value, moment.ISO_8601).format(DATE_FORMAT)}
+    </Value>
   ),
 };
 

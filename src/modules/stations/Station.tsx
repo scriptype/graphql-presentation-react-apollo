@@ -7,7 +7,7 @@ import Title from 'common/components/Title';
 import Container from 'common/components/Container';
 import GoBackButton from './components/GoBackButton';
 import LoadingOverlay from './components/LoadingOverlay';
-import StationField from './components/StationFields';
+import StationField from './components/StationField';
 import { StationFieldType } from './types';
 
 const TitleRow = styled.div`
