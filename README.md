@@ -1,6 +1,6 @@
 # React-Apollo
 
-![Travis build badge](https://api.travis-ci.org/scriptype/graphql-presentation-react-apollo.svg?branch=master)
+[![Travis build badge](https://api.travis-ci.org/scriptype/graphql-presentation-react-apollo.svg?branch=master)](https://travis-ci.org/github/scriptype/graphql-presentation-react-apollo)
 
 This is the front-end for [GraphQL Presentation App](https://chargin.cf).
 
