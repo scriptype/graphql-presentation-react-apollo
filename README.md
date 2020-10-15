@@ -35,6 +35,8 @@ npm start
 npm test
 ```
 
+App should start running at http://localhost:3000.
+
 ## Deployment
 
 Pushing to master will trigger running a deploy job in Travis. Rest of the process
