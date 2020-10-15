@@ -1,8 +1,13 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import { ConnectorFieldType } from '../../types';
 import Icon from 'common/components/Icon';
+
+type ConnectorFieldType = {
+  type: string;
+  currentType: string;
+  status: string;
+};
 
 const Container = styled.div`
   display: grid;
@@ -13,6 +18,7 @@ const Container = styled.div`
 
 type ConnectorValueType = React.HTMLAttributes<HTMLSpanElement> &
   Pick<ConnectorFieldType, 'status'>;
+
 const Value = styled(({ status, ...rest }: ConnectorValueType) => (
   <span {...rest} />
 ))`

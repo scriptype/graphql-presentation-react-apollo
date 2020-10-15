@@ -4,9 +4,3 @@ export type StationFieldType =
   | 'boolean'
   | 'date'
   | 'connector';
-
-export type ConnectorFieldType = {
-  type: string;
-  currentType: string;
-  status: string;
-};
