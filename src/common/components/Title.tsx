@@ -19,7 +19,7 @@ const StyledTitle = styled.h1`
   }
 `;
 
-type Props = {
+type Props = React.HTMLAttributes<HTMLHeadingElement> & {
   children: React.ReactNode;
 };
 
