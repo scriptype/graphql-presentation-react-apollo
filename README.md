@@ -30,11 +30,15 @@ npm install
 
 # Start file watchers and dev-server
 npm start
+
+# In a separate shell, start watching tests
+npm test
 ```
 
 ## Deployment
 
-Deployment of the app is handled by the [Hub](https://github.com/scriptype/graphql-presentation-hub).
+Pushing to master will trigger running a deploy job in Travis. Rest of the process
+is handled by the [Hub](https://github.com/scriptype/graphql-presentation-hub).
 
 In case you want to deploy this front-end separately, you can run the following
 command to build production-ready static assets into build folder:
@@ -44,12 +48,6 @@ command to build production-ready static assets into build folder:
 # have the graphql api url for the production environment.
 npm run build
 ```
-
-But the above step is not necessary when deploying the app using Hub.
-
-## Tests
-
-Not yet \_(ツ)_/¯
 
 ## Further docs
 
