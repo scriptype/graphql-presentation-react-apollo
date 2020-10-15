@@ -1,5 +1,4 @@
 import React from 'react';
-import { ApolloError } from '@apollo/client';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
@@ -20,7 +19,7 @@ const ErrorLink = styled(Link)`
 
 type Props = {
   loading: boolean;
-  error: ApolloError | undefined;
+  error: { message: string } | undefined;
   onErrorLink?: string;
   children: React.ReactNode;
 };
