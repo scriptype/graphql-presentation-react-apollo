@@ -31,7 +31,7 @@ const StyledContainer = styled.div`
     `}
 `;
 
-type Props = {
+type Props = React.HTMLAttributes<HTMLDivElement> & {
   children: React.ReactNode;
   shouldAppearFromLeft?: boolean;
   shouldAppearFromRight?: boolean;
