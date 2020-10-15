@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 import { ConnectorFieldType } from '../../types';
 import Icon from 'common/components/Icon';
 
-const ConnectorValueContainer = styled.div`
+const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   row-gap: 0.25rem;
@@ -13,7 +13,7 @@ const ConnectorValueContainer = styled.div`
 
 type ConnectorValueType = React.HTMLAttributes<HTMLSpanElement> &
   Pick<ConnectorFieldType, 'status'>;
-const ConnectorValue = styled(({ status, ...rest }: ConnectorValueType) => (
+const Value = styled(({ status, ...rest }: ConnectorValueType) => (
   <span {...rest} />
 ))`
   display: flex;
@@ -23,14 +23,14 @@ const ConnectorValue = styled(({ status, ...rest }: ConnectorValueType) => (
 
   ${({ status, theme: { colors } }) =>
     css`
-      ${ConnectorValueCurrentType} {
+      ${CurrentType} {
         background: ${status === 'Operative' ? colors.green : colors.red};
         color: white;
       }
     `}
 `;
 
-const ConnectorValueCurrentType = styled.span`
+const CurrentType = styled.span`
   padding-right: 0.3rem;
   padding-left: 0.2rem;
   font-size: 0.8rem;
@@ -40,7 +40,7 @@ const ConnectorValueCurrentType = styled.span`
   border-bottom-left-radius: inherit;
 `;
 
-const ConnectorValueName = styled.span`
+const ValueName = styled.span`
   padding-right: 0.5rem;
   padding-left: 0.3rem;
   font-size: 0.9rem;
@@ -54,23 +54,21 @@ const ConnectorIcon = styled(Icon)`
 `;
 
 const ConnectorField = (value: ConnectorFieldType[]) => (
-  <ConnectorValueContainer>
+  <Container>
     {value.map((connector) => (
-      <ConnectorValue
+      <Value
         title={`Connector is ${connector.status.toLowerCase()}`}
         key={`${connector.type}`}
         status={connector.status}
       >
-        <ConnectorValueCurrentType aria-label="Current type">
+        <CurrentType aria-label="Current type">
           <ConnectorIcon glyph="connector" />
           {connector.currentType}
-        </ConnectorValueCurrentType>
-        <ConnectorValueName aria-label="Type">
-          {connector.type}
-        </ConnectorValueName>
-      </ConnectorValue>
+        </CurrentType>
+        <ValueName aria-label="Type">{connector.type}</ValueName>
+      </Value>
     ))}
-  </ConnectorValueContainer>
+  </Container>
 );
 
 export default ConnectorField;
