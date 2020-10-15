@@ -68,8 +68,8 @@ type Props = {
 
 var GoBackButton = ({ to }: Props) => {
   return (
-    <Button to={to}>
-      <GoBackIcon glyph="arrow-left" />
+    <Button to={to} role="button">
+      <GoBackIcon aria-label="Go back" glyph="arrow-left" />
     </Button>
   );
 };
