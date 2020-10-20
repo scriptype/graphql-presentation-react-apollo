@@ -21,7 +21,6 @@ const apolloClient = new ApolloClient({
 });
 
 function App() {
-  console.log('pre-demo test');
   return (
     <ApolloProvider client={apolloClient}>
       <ThemeProvider theme={theme}>
